@@ -252,6 +252,12 @@ def setup_scheduler():
     logger.info(f"   - Module start date: {MODULE_START_DATE}")
 
 
+async def start_scheduler_hook(application: Application):
+    """Start the scheduler after the bot loop is running."""
+    scheduler.start()
+    logger.info("✅ Scheduler started successfully!")
+
+
 def main():
     """Start the bot."""
     global app
@@ -266,7 +272,7 @@ def main():
         logger.warning("⚠️  Reminders will not be sent until CHAT_ID is set.")
     
     # Create the Application
-    app = Application.builder().token(BOT_TOKEN).build()
+    app = Application.builder().token(BOT_TOKEN).post_init(start_scheduler_hook).build()
     
     # Register command handlers
     app.add_handler(CommandHandler("start", start))
@@ -279,7 +285,7 @@ def main():
     setup_scheduler()
     
     # Start scheduler
-    scheduler.start()
+    # scheduler.start()
     
     logger.info("=" * 50)
     logger.info("🚀 LaunchPad Bot started successfully!")
