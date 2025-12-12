@@ -24,7 +24,7 @@ MODULE_START_DATE = datetime(2025, 10, 5, tzinfo=TIMEZONE).date()
 
 RELEASE_CALENDAR = {
     # UPCOMING: Monday Dec 15
-    datetime(2025, 12, 15).date(): {
+    datetime(2025, 12, 12).date(): {
         "Title": "Modules 3: Idea Validation",
         "Link": "https://drive.google.com/drive/u/0/folders/1ZgSzzZYRR4uFY3VazihUylpffLmBteWJ_4wAQH5EsdFTDSGEZ8rhMeioif_0hrCYQxhzElc9"
     },
